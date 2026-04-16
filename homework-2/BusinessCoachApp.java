@@ -3,7 +3,7 @@ import java.util.Random;
 public class BusinessCoachApp {
     public static void main(String[] args) {
         Random random = new Random();
-        int guestAge = random.nextInt(84) + 6;
+        int guestAge = random.nextInt(85) + 6;
         double guestMoney = random.nextDouble(200_001.0) + 100.0;
 
         boolean isGuestInvited = true;
