@@ -18,7 +18,7 @@ public class BusinessCoachApp {
         double mandatoryDonation = guestMoney * 0.075;
 
         String message = isGuestAllowed ? "Обязательный добровольный взнос: %.2f" :
-                "Ты не подходишь... с тебя обязательный добровольный взнос: %.2f";
+                "Ты не пройдёшь... с тебя обязательный добровольный взнос: %.2f";
 
         System.out.printf(message, mandatoryDonation);
     }
