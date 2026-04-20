@@ -3,7 +3,7 @@ import java.util.Random;
 public class BusinessCoachApp {
     public static void main(String[] args) {
         Random random = new Random();
-        int guestAge = random.nextInt(85) + 6;
+        int guestAge = random.nextInt(84) + 6;
         double guestMoney = random.nextDouble(200_001.0) + 100.0;
 
         boolean isGuestInvited = false;
@@ -17,6 +17,9 @@ public class BusinessCoachApp {
 
         double mandatoryDonation = guestMoney * 0.075;
 
-        System.out.printf("Обязательный добровольный взнос: %.2f",  mandatoryDonation);
+        String message = isGuestAllowed ? "Обязательный добровольный взнос: %.2f" :
+                "Ты не подходишь... с тебя обязательный добровольный взнос: %.2f";
+
+        System.out.printf(message, mandatoryDonation);
     }
 }
