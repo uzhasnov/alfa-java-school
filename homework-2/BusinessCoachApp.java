@@ -6,11 +6,11 @@ public class BusinessCoachApp {
         int guestAge = random.nextInt(85) + 6;
         double guestMoney = random.nextDouble(200_001.0) + 100.0;
 
-        boolean isGuestInvited = true;
+        boolean isGuestInvited = false;
         boolean isGuestBlackListed = false;
 
         boolean isGuestOldEnough = guestAge >= 18;
-        boolean isGuestInvitedAndHasEnoughMoney = guestMoney >= 50_000.0 && isGuestInvited;
+        boolean isGuestInvitedOrHasEnoughMoney = isGuestInvited || guestMoney >= 50_000.0;
         boolean isGuestAllowed = isGuestOldEnough && isGuestInvitedAndHasEnoughMoney && !isGuestBlackListed;
 
         System.out.printf("Участник подходит под критерии: %b\n",  isGuestAllowed);
