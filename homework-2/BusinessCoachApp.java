@@ -11,7 +11,7 @@ public class BusinessCoachApp {
 
         boolean isGuestOldEnough = guestAge >= 18;
         boolean isGuestInvitedOrHasEnoughMoney = isGuestInvited || guestMoney >= 50_000.0;
-        boolean isGuestAllowed = isGuestOldEnough && isGuestInvitedAndHasEnoughMoney && !isGuestBlackListed;
+        boolean isGuestAllowed = isGuestOldEnough && isGuestInvitedOrHasEnoughMoney && !isGuestBlackListed;
 
         System.out.printf("Участник подходит под критерии: %b\n",  isGuestAllowed);
 
