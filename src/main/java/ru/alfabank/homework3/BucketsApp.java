@@ -54,7 +54,7 @@ public class BucketsApp {
                 getProductWithTheLongestNameLength(arrayOfProductsWithTheLongestNameLength));
         System.out.printf(
                 "Товар с самым коротким названием среди всех товаров: %s\n",
-                getProductWithTheLongestNameLength(arrayOfProductsWithTheShortestNameLength));
+                getProductWithTheShortestNameLength(arrayOfProductsWithTheShortestNameLength));
         System.out.printf(
                 "Средняя длина названия товара среди всех товаров: %s\n",
                 getAverageProductNameLengthBetweenAllProducts(arrayOfAverageProductNameLength));
