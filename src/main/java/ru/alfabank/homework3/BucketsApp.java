@@ -11,67 +11,56 @@ public class BucketsApp {
 
         boolean areBucketsOfPetyaAndKolyaHaveTheSameAmountOfProducts =
                 bucketOfPetya.length == bucketOfKolya.length;
-        boolean areBucketsOfPetyaAndKolyaHaveTheSameProducts =
-                Arrays.equals(bucketOfPetya, bucketOfKolya);
         boolean areBucketsOfPetyaAndTerentiyHaveTheSameAmountOfProducts =
                 bucketOfPetya.length == bucketOfTerentiy.length;
-        boolean areBucketsOfPetyaAndTerentiyHaveTheSameProducts =
-                Arrays.equals(bucketOfPetya, bucketOfTerentiy);
 
         System.out.printf(
                 "Количество товаров в Колиной корзине такое же, как и в Петиной: %s\n",
-                areBucketsOfPetyaAndKolyaHaveTheSameProducts);
-
-        System.out.printf(
-                "Товары в Колиной корзине такие же, как и в Петиной: %s\n",
                 areBucketsOfPetyaAndKolyaHaveTheSameAmountOfProducts);
-
         System.out.printf(
                 "Количество товаров корзине Терентия такое же, как и в Петиной: %s\n",
                 areBucketsOfPetyaAndTerentiyHaveTheSameAmountOfProducts);
 
+        boolean areBucketsOfPetyaAndKolyaHaveTheSameProducts =
+                Arrays.equals(bucketOfPetya, bucketOfKolya);
+        boolean areBucketsOfPetyaAndTerentiyHaveTheSameProducts =
+                Arrays.equals(bucketOfPetya, bucketOfTerentiy);
+
+        System.out.printf(
+                "Товары в Колиной корзине такие же, как и в Петиной: %s\n",
+                areBucketsOfPetyaAndKolyaHaveTheSameProducts);
         System.out.printf(
                 "Товары в корзине Терентия такие же, как и в Петиной: %s\n",
                 areBucketsOfPetyaAndTerentiyHaveTheSameProducts);
 
-        System.out.printf(
-                "Товар с самым длинным названием в козине у Пети: %s\n",
-                getProductWithMaxNameLength(bucketOfPetya));
+        String[] arrayOfProductsWithTheLongestNameLength = {
+                getProductWithTheLongestNameLength(bucketOfPetya),
+                getProductWithTheLongestNameLength(bucketOfKolya),
+                getProductWithTheLongestNameLength(bucketOfTerentiy)
+        };
+        String[] arrayOfProductsWithTheShortestNameLength = {
+                getProductWithTheShortestNameLength(bucketOfPetya),
+                getProductWithTheShortestNameLength(bucketOfKolya),
+                getProductWithTheShortestNameLength(bucketOfTerentiy)
+        };
+        int[] arrayOfAverageProductNameLength = {
+                getAverageProductNameLength(bucketOfPetya),
+                getAverageProductNameLength(bucketOfKolya),
+                getAverageProductNameLength(bucketOfTerentiy)
+        };
 
         System.out.printf(
-                "Товар с самым длинным названием в козине у Коли: %s\n",
-                getProductWithMaxNameLength(bucketOfKolya));
-
+                "Товар с самым длинным названием среди всех товаров: %s\n",
+                getProductWithTheLongestNameLength(arrayOfProductsWithTheLongestNameLength));
         System.out.printf(
-                "Товар с самым длинным названием в козине у Терентия: %s\n",
-                getProductWithMaxNameLength(bucketOfTerentiy));
-
+                "Товар с самым коротким названием среди всех товаров: %s\n",
+                getProductWithTheLongestNameLength(arrayOfProductsWithTheShortestNameLength));
         System.out.printf(
-                "Товар с самым коротким названием в козине у Пети: %s\n",
-                getProductWithMinNameLength(bucketOfPetya));
-
-        System.out.printf(
-                "Товар с самым коротким названием в козине у Коли: %s\n",
-                getProductWithMinNameLength(bucketOfKolya));
-
-        System.out.printf(
-                "Товар с самым коротким названием в козине у Терентия: %s\n",
-                getProductWithMinNameLength(bucketOfTerentiy));
-
-        System.out.printf(
-                "Средняя длина названия товара в козине у Пети: %s\n",
-                averageProductNameLength(bucketOfPetya));
-
-        System.out.printf(
-                "Средняя длина названия товара в козине у Коли: %s\n",
-                averageProductNameLength(bucketOfKolya));
-
-        System.out.printf(
-                "Средняя длина названия товара в козине у Терентия: %s\n",
-                averageProductNameLength(bucketOfTerentiy));
+                "Средняя длина названия товара среди всех товаров: %s\n",
+                getAverageProductNameLengthBetweenAllProducts(arrayOfAverageProductNameLength));
     }
 
-    private static String getProductWithMinNameLength(String[] products) {
+    private static String getProductWithTheShortestNameLength(String[] products) {
         String productWithMinNameLength = products[0];
         for (String product : products) {
             if (product.length() < productWithMinNameLength.length()) {
@@ -82,7 +71,7 @@ public class BucketsApp {
         return productWithMinNameLength;
     }
 
-    private static String getProductWithMaxNameLength(String[] products) {
+    private static String getProductWithTheLongestNameLength(String[] products) {
         String productWithMaxNameLength = products[0];
         for (String product : products) {
             if (product.length() > productWithMaxNameLength.length()) {
@@ -93,12 +82,21 @@ public class BucketsApp {
         return productWithMaxNameLength;
     }
 
-    private static int averageProductNameLength(String[] products) {
+    private static int getAverageProductNameLength(String[] products) {
         int lengthOfNamesForAllProducts = 0;
         for (String product : products) {
             lengthOfNamesForAllProducts += product.length();
         }
 
         return lengthOfNamesForAllProducts / products.length;
+    }
+
+    private static int getAverageProductNameLengthBetweenAllProducts(int[] arrayOfAverageProductLength) {
+        int productLengthSum = 0;
+        for (int length : arrayOfAverageProductLength) {
+            productLengthSum += length;
+        }
+
+        return productLengthSum / arrayOfAverageProductLength.length;
     }
 }
