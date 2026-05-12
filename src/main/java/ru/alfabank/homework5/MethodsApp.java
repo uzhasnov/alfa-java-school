@@ -26,11 +26,7 @@ public class MethodsApp {
     }
 
     private static boolean isValidCode(String code, int minLength) {
-        if (code != null && code.length() >= minLength && code.contains("-")) {
-            return true;
-        } else {
-            return false;
-        }
+        return code != null && code.length() >= minLength && code.contains("-");
     }
 
     public static void logEvent(String message) {
@@ -47,7 +43,7 @@ public class MethodsApp {
 
     public static String generateAgentId(String prefix, int seed) {
         Random random = new Random(seed);
-        int salt = random.nextInt(9000) + 1000;
+        int salt = random.nextInt(1_000, 10_000);
 
         return String.format("%s-%d", prefix, salt);
     }
