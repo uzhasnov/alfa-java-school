@@ -4,8 +4,8 @@ public class ExpressParcel extends Parcel {
 
     private int deliveryHours;
 
-    public ExpressParcel(String name, String address, double weight, String trackNumber, int deliveryHours) {
-        super(name, address, weight, trackNumber);
+    public ExpressParcel(String recipient, String address, double weight, String trackNumber, int deliveryHours) {
+        super(recipient, address, weight, trackNumber);
         this.deliveryHours = deliveryHours;
     }
 

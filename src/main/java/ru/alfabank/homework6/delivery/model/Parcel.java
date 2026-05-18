@@ -2,13 +2,13 @@ package ru.alfabank.homework6.delivery.model;
 
 public class Parcel {
 
-    private String name;
+    private String recipient;
     private String address;
     protected double weight;
     String trackNumber;
 
-    public Parcel(String name, String address, double weight, String trackNumber) {
-        this.name = name;
+    public Parcel(String recipient, String address, double weight, String trackNumber) {
+        this.recipient = recipient;
         this.address = address;
         this.weight = weight;
         this.trackNumber = trackNumber;
@@ -17,12 +17,12 @@ public class Parcel {
     public Parcel() {
     }
 
-    public String getName() {
-        return name;
+    public String getRecipient() {
+        return recipient;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
     public String getAddress() {
@@ -47,12 +47,12 @@ public class Parcel {
 
     public void printInfo() {
         System.out.printf("""
-                        Parcel name: %s
+                        Recipient: %s
                         Address: %s
                         Weight: %s
                         Track number: %s
                         """,
-                        name,
+                        recipient,
                         address,
                         weight,
                         trackNumber

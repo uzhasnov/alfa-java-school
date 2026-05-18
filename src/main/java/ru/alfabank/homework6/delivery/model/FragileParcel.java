@@ -4,8 +4,8 @@ public class FragileParcel extends Parcel {
 
     private boolean requiresCarefulDelivery;
 
-    public FragileParcel(String name, String address, double weight, String trackId, boolean requiresCarefulDelivery) {
-        super(name, address, weight, trackId);
+    public FragileParcel(String recipient, String address, double weight, String trackId, boolean requiresCarefulDelivery) {
+        super(recipient, address, weight, trackId);
         this.requiresCarefulDelivery = requiresCarefulDelivery;
     }
 

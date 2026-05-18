@@ -9,21 +9,21 @@ public class Main {
     public static void main(String[] args) {
 
         Parcel ordinaryParcel = new Parcel(
-                "Письмо",
+                "Иванов И.И.",
                 "д. Кукуево",
                 30.0,
                 "32562346"
         );
 
         FragileParcel fragileParcel = new FragileParcel(
-                "Хрупкая посылка",
+                "Петров А.С.",
                 "г. Сочи",
                 1500.0, "32562347",
                 true
         );
 
         ExpressParcel expressParcel = new ExpressParcel(
-                "Заказное письмо",
+                "Сидоров К.Ю.",
                 "г. Москва",
                 50.0,
                 "32562348",
