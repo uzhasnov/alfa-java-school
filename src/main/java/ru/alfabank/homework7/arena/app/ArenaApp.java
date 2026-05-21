@@ -17,7 +17,6 @@ public class ArenaApp {
         for (Hero hero : heroes) {
             hero.printInfo();
             hero.attack();
-            System.out.println();
         }
 
         final Knight knight = new Knight("Добрыня", 300, 20);

@@ -64,7 +64,7 @@ public abstract class Hero {
 
     @Override
     public String toString() {
-        return "Имя героя: " + name +
+        return "\nИмя героя: " + name +
                 "\nУровень героя: " + level +
                 "\nУровень здоровья героя: " + health;
     }
