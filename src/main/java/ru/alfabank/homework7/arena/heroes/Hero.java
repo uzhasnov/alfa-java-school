@@ -2,9 +2,9 @@ package ru.alfabank.homework7.arena.heroes;
 
 public abstract class Hero {
 
-    protected final String name;
-    protected int level = 1;
-    protected int health;
+    private final String name;
+    private int level = 1;
+    private int health;
     public static final int MAX_LEVEL = 100;
     private static int heroesCreated;
 
@@ -15,9 +15,7 @@ public abstract class Hero {
     }
 
     public void printInfo() {
-        System.out.printf("Имя героя: %s.\n", name);
-        System.out.printf("Уровень героя: %d.\n", level);
-        System.out.printf("Уровень здоровья героя: %d.\n", health);
+        System.out.println(this);
     }
 
     public void takeDamage(int damage) {
@@ -50,5 +48,24 @@ public abstract class Hero {
 
     public final void rest() {
         System.out.println("Герой отдыхает и восстанавливает силы.");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    @Override
+    public String toString() {
+        return "Имя героя: " + name +
+                "\nУровень героя: " + level +
+                "\nУровень здоровья героя: " + health;
     }
 }

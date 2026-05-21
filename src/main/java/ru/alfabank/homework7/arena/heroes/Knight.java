@@ -24,11 +24,7 @@ public class Knight extends Hero {
 
     @Override
     public String toString() {
-        return "Knight{" +
-                "armor=" + armor +
-                ", name='" + name + '\'' +
-                ", level=" + level +
-                ", health=" + health +
-                '}';
+        return super.toString() +
+                "\nБроня героя: " + armor;
     }
 }

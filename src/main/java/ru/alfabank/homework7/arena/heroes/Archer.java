@@ -24,11 +24,7 @@ public class Archer extends Hero {
 
     @Override
     public String toString() {
-        return "Archer{" +
-                "arrowsCount=" + arrowsCount +
-                ", name='" + name + '\'' +
-                ", level=" + level +
-                ", health=" + health +
-                '}';
+        return super.toString() +
+                "\nСтрелы героя: " + arrowsCount;
     }
 }

@@ -24,11 +24,7 @@ public class Mage extends Hero {
 
     @Override
     public String toString() {
-        return "Mage{" +
-                "mana=" + mana +
-                ", name='" + name + '\'' +
-                ", level=" + level +
-                ", health=" + health +
-                '}';
+        return super.toString() +
+                "\nМана героя: " + mana;
     }
 }
