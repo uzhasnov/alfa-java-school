@@ -6,7 +6,7 @@ public abstract class Hero {
     protected int level = 1;
     protected int health;
     public static final int MAX_LEVEL = 100;
-    public static int heroesCreated;
+    private static int heroesCreated;
 
     public Hero(String name, int health) {
         this.name = name;
@@ -30,8 +30,10 @@ public abstract class Hero {
         if (level < MAX_LEVEL) {
             level++;
         }
+    }
 
-
+    public static int getHeroesCreated() {
+        return heroesCreated;
     }
 
     public void attack() {
