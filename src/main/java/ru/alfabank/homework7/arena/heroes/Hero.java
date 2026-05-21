@@ -32,10 +32,6 @@ public abstract class Hero {
         }
     }
 
-    public static int getHeroesCreated() {
-        return heroesCreated;
-    }
-
     public void attack() {
         System.out.println("Герой наносит обычный удар.");
     }
