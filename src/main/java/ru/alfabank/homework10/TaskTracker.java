@@ -7,9 +7,10 @@ public class TaskTracker {
 
     private final List<Task> tasks = new ArrayList<>();
 
-    public void addTask(Task task) {
-        tasks.add(task);
-        System.out.println("Добавлена задача: " + task);
+    public void addTask(String taskName) {
+        Task taskToAdd = new Task(taskName);
+        tasks.add(taskToAdd);
+        System.out.println("Добавлена задача: " + taskToAdd);
     }
 
     public void printAllTasks() {
