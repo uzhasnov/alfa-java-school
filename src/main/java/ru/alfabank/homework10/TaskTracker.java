@@ -10,32 +10,32 @@ public class TaskTracker {
     public void addTask(String taskName) {
         Task taskToAdd = new Task(taskName);
         tasks.add(taskToAdd);
-        System.out.println("Добавлена задача: " + taskToAdd);
+        System.out.printf("Добавлена задача \"%s\"\n", taskToAdd);
     }
 
     public void printAllTasks() {
-        System.out.println("Список задач:");
+        System.out.println("\nСписок задач:");
         for (Task task : tasks) {
             System.out.println(task);
         }
     }
 
     public Task findTask(String taskName) {
+        System.out.printf("\nПоиск задачи с названием \"%s\"\n", taskName);
         for (Task task : tasks) {
             if (task.getName().equals(taskName)) {
-                System.out.println(task);
+                System.out.printf("Найдена задача \"%s\"\n", task);
                 return task;
-            } else {
-                System.out.println("Задача не найдена");
             }
         }
+        System.out.println("Задача не найдена");
         return null;
     }
 
     public Task setTaskAsDone(String taskName) {
         Task taskToSetDone = findTask(taskName);
         taskToSetDone.setTaskAsDone();
-        System.out.printf("Задача %s помечена как выполненная", taskToSetDone.getName());
+        System.out.printf("Задача помечена как выполненная: \"%s\"\n", taskToSetDone);
         return taskToSetDone;
     }
 
