@@ -17,7 +17,7 @@ public class Task {
         return name;
     }
 
-    public Boolean getStatus() {
+    public boolean isDone() {
         return isDone;
     }
 

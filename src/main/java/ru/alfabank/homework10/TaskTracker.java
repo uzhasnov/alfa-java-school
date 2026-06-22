@@ -48,7 +48,7 @@ public class TaskTracker {
         int tasksNotDoneCount;
 
         for (Task task : tasks) {
-            if (task.getStatus()) {
+            if (task.isDone()) {
                 tasksDoneCount++;
             }
         }
