@@ -3,29 +3,31 @@ package ru.alfabank.homework10;
 public class Task {
 
     private final String name;
-    private String status;
-    private final static String TASK_STATUS_DONE_VALUE = "[x]";
-    private final static String TASK_STATUS_NOT_DONE_VALUE = "[ ]";
+    private boolean isDone;
 
     public Task(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Имя задачи не может быть пустым");
+        }
         this.name = name;
-        this.status = Task.TASK_STATUS_NOT_DONE_VALUE;
+        this.isDone = false;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getStatus() {
-        return status;
+    public Boolean getStatus() {
+        return isDone;
     }
 
     public void setTaskAsDone() {
-        status = TASK_STATUS_DONE_VALUE;
+        isDone = true;
     }
 
     @Override
     public String toString() {
-        return status + " " + name;
+        String statusIcon = isDone ? "[x]" : "[ ]";
+        return String.format("%s %s", statusIcon, name);
     }
 }

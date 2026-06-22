@@ -34,9 +34,12 @@ public class TaskTracker {
 
     public Task setTaskAsDone(String taskName) {
         Task taskToSetDone = findTask(taskName);
-        taskToSetDone.setTaskAsDone();
-        System.out.printf("Задача помечена как выполненная: \"%s\"\n", taskToSetDone);
-        return taskToSetDone;
+        if (taskToSetDone != null) {
+            taskToSetDone.setTaskAsDone();
+            System.out.printf("Задача помечена как выполненная: \"%s\"\n", taskToSetDone);
+            return taskToSetDone;
+        } else throw new IllegalArgumentException("Задача не найдена");
+
     }
 
     public void printStatistics() {
@@ -45,7 +48,7 @@ public class TaskTracker {
         int tasksNotDoneCount;
 
         for (Task task : tasks) {
-            if (task.getStatus().equals("[x]")) {
+            if (task.getStatus()) {
                 tasksDoneCount++;
             }
         }
