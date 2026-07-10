@@ -20,13 +20,11 @@ public class AssaultQueue {
     }
 
     public void printQueue() {
-        System.out.println(queue);
+        System.out.println(this);
     }
 
     @Override
     public String toString() {
-        return "AssaultQueue{" +
-                "queue=" + queue +
-                '}';
+        return "Очередь на штурм: " + queue;
     }
 }

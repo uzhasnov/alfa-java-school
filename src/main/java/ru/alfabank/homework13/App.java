@@ -50,8 +50,8 @@ public class App {
 
         assaultQueue.printQueue();
 
-        System.out.println(assaultQueue.retireCoward() + " уволен за трусость");
-        System.out.println(assaultQueue.retireCoward() + " уволен за трусость");
+        System.out.println(assaultQueue.retireCoward() + " сбежал");
+        System.out.println(assaultQueue.retireCoward() + " сбежал");
 
         assaultQueue.addRecruit("Алексей");
         assaultQueue.addRecruit("Владимир");
