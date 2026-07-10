@@ -9,7 +9,7 @@ public class Alien {
     private final int dangerLevel;
 
     public Alien(String name, String planet, int dangerLevel) {
-        if (name.isBlank() || planet.isBlank() || dangerLevel < 1 || dangerLevel > 10) {
+        if (name == null || planet == null || name.isBlank() || planet.isBlank() || dangerLevel < 1 || dangerLevel > 10) {
             throw new IllegalArgumentException("Имя пришельца и название планеты не могут быть пустыми, " +
                     "уровень опасности должен быть от 1 до 10");
         } else {
