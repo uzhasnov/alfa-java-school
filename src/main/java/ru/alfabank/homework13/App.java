@@ -14,6 +14,12 @@ public class App {
         aliens.add(new Alien("Кронгар", "Тор-Вулкан", 4));
         aliens.add(new Alien("Тауромон", "Эребус-Прайм", 4));
 
+        if (aliens.size() == aliens.stream().distinct().count()) {
+            System.out.println("Список пришельцев не содержит дубликаты");
+        } else {
+            System.out.println("Список пришельцев содержит дубликаты");
+        }
+
         for (Alien alien : aliens) {
             System.out.println(alien);
         }
