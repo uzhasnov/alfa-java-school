@@ -62,7 +62,7 @@ public class SquadManager {
 
         try {
             squad.add(trooperName);
-            System.out.println("Штурмовик " + trooperName + " успешно добавлен в список элитного отряда");
+            System.out.println("Штурмовик " + trooperName + " успешно добавлен в список отряда");
         } catch (RuntimeException e) {
             System.out.println(e.getClass().getName() + ": Добавление штурмовика " + trooperName + " в отряд запрещено");
         }
@@ -74,7 +74,7 @@ public class SquadManager {
 
         try {
             squad.add(trooperName);
-            System.out.println("Штурмовик " + trooperName + " успешно удалён из списка элитного отряда");
+            System.out.println("Штурмовик " + trooperName + " успешно удалён из списка отряда");
         } catch (RuntimeException e) {
             System.out.println(e.getClass().getName() + ": Удаление штурмовика " + trooperName + " из отряда запрещено");
         }
