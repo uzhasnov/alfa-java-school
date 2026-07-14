@@ -62,7 +62,7 @@ public class SquadManager {
 
         try {
             squad.add(trooperName);
-            System.out.println("Штурмовик " + trooperName + " успешно добавлен в список отряда");
+            System.out.println("Штурмовик " + trooperName + " успешно добавлен в список элитного отряда");
         } catch (RuntimeException e) {
             System.out.println(e.getClass().getName() + ": Добавление штурмовика " + trooperName + " в отряд запрещено");
         }
