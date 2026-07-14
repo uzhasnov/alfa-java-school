@@ -35,12 +35,12 @@ public class Alien {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Alien alien = (Alien) o;
-        return dangerLevel == alien.dangerLevel && Objects.equals(name, alien.name) && Objects.equals(planet, alien.planet);
+        return Objects.equals(name, alien.name) && Objects.equals(planet, alien.planet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, planet, dangerLevel);
+        return Objects.hash(name, planet);
     }
 
     @Override
