@@ -1,6 +1,7 @@
 package ru.alfabank.homework13;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MissionReport {
 
@@ -24,6 +25,19 @@ public class MissionReport {
 
     public int getSquadSize() {
         return squadSize;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        MissionReport report = (MissionReport) o;
+        return squadSize == report.squadSize &&
+                Objects.equals(missionName, report.missionName) && Objects.equals(capturedAliens, report.capturedAliens);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(missionName, capturedAliens, squadSize);
     }
 
     @Override
