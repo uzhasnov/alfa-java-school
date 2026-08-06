@@ -5,7 +5,7 @@ import java.util.List;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         List<Movie> movies = new ArrayList<>();
 
@@ -19,5 +19,14 @@ public class App {
         movies.sort(new MovieRatingComparator());
 
         System.out.println(movies);
+
+        Person person = new Person(
+                "Петров Иван Васильевич",
+                23,
+                "0113 098765",
+                223000.0
+        );
+
+        ObjectInspector.inspect(person);
     }
 }
