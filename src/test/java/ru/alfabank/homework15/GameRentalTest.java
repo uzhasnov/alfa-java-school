@@ -1,11 +1,32 @@
 package ru.alfabank.homework15;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 @DisplayName("Тесты на иренду и возврат настольных игр")
 public class GameRentalTest {
+
+    private RentalService service;
+
+    @BeforeEach
+    void setUp() {
+        service = new RentalService();
+    }
+
+    static Stream<Arguments> provideAgesForRentTest() {
+        return Stream.of(
+                Arguments.of(11, false),
+                Arguments.of(12, true),
+                Arguments.of(15, true)
+        );
+    }
 
     @Test
     @DisplayName("Метод rentGame должен выбрасывать исключение, если игра отсутствует в каталоге")
@@ -18,22 +39,21 @@ public class GameRentalTest {
                 "Ожидалось исключение, так как игра не найдена");
     }
 
-    @Test
-    @DisplayName("Метод rentGame должен возвращать false, если возраст клиента меньше минимального")
-    void shouldReturnFalseWhenCustomerIsTooYoung() {
-        RentalService service = new RentalService();
-        BoardGame adultGame = new BoardGame("Ужас Аркхэма", 14, 500);
-        service.addGame(adultGame);
+    @ParameterizedTest(name = "Клиент возраста {0} лет пытается арендовать игру 12+. Ожидаемый результат: {1}")
+    @MethodSource("provideAgesForRentTest")
+    @DisplayName("Параметризованная проверка возраста при аренде игры")
+    void shouldCheckAgeRestrictionsOnRent(int customerAge, boolean expectedResult) {
+        BoardGame game = new BoardGame("Мафия", 12, 200);
+        service.addGame(game);
 
-        boolean result = service.rentGame("Ужас Аркхэма", 10);
+        boolean actualResult = service.rentGame("Мафия", customerAge);
 
-        Assertions.assertFalse(result, "Игра не должна сдаваться в аренду слишком юному клиенту");
+        Assertions.assertEquals(expectedResult, actualResult, "Результат проверки возраста не совпадает с ожидаемым");
     }
 
     @Test
     @DisplayName("Метод rentGame должен возвращать false, если игра уже кем-то арендована")
     void shouldReturnFalseWhenGameIsAlreadyRented() {
-        RentalService service = new RentalService();
         BoardGame game = new BoardGame("Монополия", 6, 300);
         service.addGame(game);
 
@@ -47,8 +67,6 @@ public class GameRentalTest {
     @Test
     @DisplayName("Метод returnGame должен возвращать false, если игра отсутствует в пункте проката")
     void shouldReturnFalseWhenReturningNonExistentGame() {
-        RentalService service = new RentalService();
-
         boolean result = service.returnGame("Шахматы");
 
         Assertions.assertFalse(result, "Метод должен вернуть false, если такой игры вообще нет");
@@ -57,7 +75,6 @@ public class GameRentalTest {
     @Test
     @DisplayName("Метод returnGame должен возвращать false, если игра не была предварительно арендована")
     void shouldReturnFalseWhenReturningNotRentedGame() {
-        RentalService service = new RentalService();
         BoardGame game = new BoardGame("Монополия", 6, 300);
         service.addGame(game);
 
@@ -69,7 +86,6 @@ public class GameRentalTest {
     @Test
     @DisplayName("Метод returnGame должен менять статус игры на доступна и возвращать true при успешном возврате")
     void shouldReturnTrueAndResetStatusWhenReturnIsSuccessful() {
-        RentalService service = new RentalService();
         BoardGame game = new BoardGame("Монополия", 6, 300);
         service.addGame(game);
 
@@ -84,7 +100,6 @@ public class GameRentalTest {
     @Test
     @DisplayName("Метод reset должен переводить все арендованные игры в статус доступных")
     void shouldMakeAllRentedGamesAvailableAfterReset() {
-        RentalService service = new RentalService();
         BoardGame game1 = new BoardGame("Монополия", 6, 300);
         BoardGame game2 = new BoardGame("Каркассон", 7, 250);
 
@@ -103,9 +118,6 @@ public class GameRentalTest {
     @Test
     @DisplayName("Метод reset не должен вызывать ошибок, если в каталоге нет игр или они не арендованы")
     void shouldNotThrowExceptionWhenInventoryIsEmptyOrNoGamesRented() {
-
-        RentalService service = new RentalService();
-
         Assertions.assertDoesNotThrow(service::reset,
                 "Метод reset на пустом каталоге не должен выбрасывать исключений");
 
