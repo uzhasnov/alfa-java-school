@@ -15,8 +15,16 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'net.datafaker:datafaker:2.5.4'
     implementation 'com.github.lalyos:jfiglet:0.0.8'
+    implementation 'io.cucumber:cucumber-java:7.34.6'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.34.6'
+    testImplementation 'org.junit.platform:junit-platform-suite'
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        lifecycle {
+            events "started", "passed", "skipped", "failed", "standardOut", "standardError"
+        }
+    }
 }
