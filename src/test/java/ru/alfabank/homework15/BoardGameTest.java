@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Класс с тестами для BoardGame")
+@DisplayName("Тесты для BoardGame")
 public class BoardGameTest {
 
     static BoardGame game;
