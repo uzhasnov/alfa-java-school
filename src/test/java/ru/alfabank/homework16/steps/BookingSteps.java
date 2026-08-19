@@ -76,7 +76,7 @@ public class BookingSteps {
     }
 
     @Если("^гость (увеличивает|уменьшает) бронь на 2 человека$")
-    public void changeBookingByClient() {
+    public void changeBookingByClient(String arg0) {
         System.out.println("changeBookingByClient()");
     }
 }

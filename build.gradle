@@ -22,7 +22,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    include '**/runners/**'
     testLogging {
         lifecycle {
             events "started", "passed", "skipped", "failed", "standardOut", "standardError"
