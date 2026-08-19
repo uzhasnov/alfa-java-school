@@ -1,17 +1,23 @@
 package ru.alfabank.homework15;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Тесты на работу с каталогом (добавление, поиск, проверка дубликатов)")
 public class GameCatalogTest {
 
+    private RentalService service;
+
+    @BeforeEach
+    void setUp() {
+        service = new RentalService();
+    }
+
     @Test
     @DisplayName("Метод addGame должен выбрасывать исключение, если передана игра со значением null")
     void shouldThrowExceptionWhenAddingNullGame() {
-        RentalService service = new RentalService();
-
         IllegalArgumentException exception = Assertions.assertThrows(
                 IllegalArgumentException.class,
                 () -> service.addGame(null)
@@ -23,7 +29,6 @@ public class GameCatalogTest {
     @Test
     @DisplayName("Метод addGame должен выбрасывать исключение при попытке добавить игру с дублирующимся названием")
     void shouldThrowExceptionWhenAddingDuplicateGameName() {
-        RentalService service = new RentalService();
         BoardGame originalGame = new BoardGame("Монополия", 6, 300);
         BoardGame duplicateGame = new BoardGame("монополия", 12, 500);
 
@@ -41,7 +46,6 @@ public class GameCatalogTest {
     @Test
     @DisplayName("Метод findGameByName должен возвращать объект игры, если она найдена (без учета регистра)")
     void shouldReturnBoardGameWhenFoundByName() {
-        RentalService service = new RentalService();
         BoardGame expectedGame = new BoardGame("Мафия", 12, 200);
         service.addGame(expectedGame);
 
@@ -54,7 +58,6 @@ public class GameCatalogTest {
     @Test
     @DisplayName("Метод findGameByName должен возвращать null, если игра с таким названием отсутствует")
     void shouldReturnNullWhenGameNotFoundByName() {
-        RentalService service = new RentalService();
         service.addGame(new BoardGame("Мафия", 12, 200));
 
         BoardGame actualGame = service.findGameByName("Шахматы");
