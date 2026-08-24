@@ -215,4 +215,76 @@ public class ServeRestTest {
 
         userEmail = dtoEmail;
     }
+
+    @Test
+    void shouldNotLoginWithWrongPassword() {
+        String loginBody = """
+                {
+                  "email": "fulano@qa.com",
+                  "password": "senha-errada"
+                }
+                """;
+
+        given()
+            .contentType(ContentType.JSON)
+            .body(loginBody)
+        .when()
+            .post("/login")
+        .then()
+            .statusCode(401)
+            .contentType(ContentType.JSON)
+            .body("message", equalTo("Email e/ou senha inválidos"));
+    }
+
+    @Test
+    void shouldRejectDuplicateEmail() {
+        String duplicateEmail = "spy_dup_" + System.currentTimeMillis() + "@qa.com";
+
+        Usuario user = new Usuario(
+                "Primeiro Usuário",
+                duplicateEmail,
+                "secret123",
+                "true"
+        );
+
+        given()
+            .contentType(ContentType.JSON)
+            .body(user)
+        .when()
+            .post("/usuarios")
+        .then()
+            .statusCode(201);
+
+        given()
+            .contentType(ContentType.JSON)
+            .body(user)
+        .when()
+            .post("/usuarios")
+        .then()
+            .statusCode(400)
+            .contentType(ContentType.JSON)
+            .body("message", equalTo("Este email já está sendo usado"));
+    }
+
+    @Test
+    void shouldFindProductByName() {
+        String productName =
+                given()
+                .when()
+                    .get("/produtos")
+                .then()
+                    .statusCode(200)
+                    .extract()
+                    .path("produtos[0].nome");
+
+        given()
+            .queryParam("nome", productName)
+        .when()
+            .get("/produtos")
+        .then()
+            .statusCode(200)
+            .contentType(ContentType.JSON)
+            .body("quantidade", greaterThan(0))
+            .body("produtos.nome", everyItem(equalTo(productName)));
+    }
 }
