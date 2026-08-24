@@ -167,14 +167,7 @@ public class ServeRestTest {
 
     @Test
     void shouldGetAllProducts() {
-        String realProductName =
-                given()
-                .when()
-                    .get("/produtos")
-                .then()
-                    .extract()
-                    .path("produtos[0].nome");
-
+        String realProductName = getFirstProductName();
 
         given()
         .when()
@@ -186,6 +179,17 @@ public class ServeRestTest {
             .body("produtos.preco", everyItem(greaterThan(0)))
             .body("produtos.nome", everyItem(not(emptyOrNullString())))
             .body("produtos.nome", hasItem(realProductName));
+    }
+
+    private String getFirstProductName() {
+        return given()
+                .when()
+                .get("/produtos")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .extract()
+                .path("produtos[0].nome");
     }
 
     @Test
