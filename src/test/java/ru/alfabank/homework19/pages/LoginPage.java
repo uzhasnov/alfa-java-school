@@ -52,6 +52,13 @@ public class LoginPage {
         return this;
     }
 
+    public LoginPage shouldShowMessage(String expectedText) {
+        flashMessage
+                .shouldHave(text(expectedText));
+
+        return this;
+    }
+
     public LoginPage shouldShowSuccessMessage() {
         flashMessage
                 .shouldHave(text("You logged into a secure area!"));
@@ -62,6 +69,13 @@ public class LoginPage {
     public LoginPage shouldShowInvalidCredentialsMessage() {
         flashMessage
                 .shouldHave(text("Your username is invalid!"));
+
+        return this;
+    }
+
+    public LoginPage shouldHaveLogoutButton() {
+        logoutLink
+                .shouldBe(visible);
 
         return this;
     }

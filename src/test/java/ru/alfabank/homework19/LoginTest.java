@@ -12,8 +12,7 @@ public class LoginTest {
 
     @BeforeAll
     static void setUp() {
-        Configuration.headless = false;
-        Configuration.browser = "chrome";
+        Configuration.headless = true;
     }
 
     @AfterEach
